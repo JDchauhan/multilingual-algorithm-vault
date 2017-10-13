@@ -57,9 +57,9 @@ if(typeof require && require.main == module){
             console.log("enter key value to search:");
         }else{
             value = answer;
-            console.log(data);
-            console.log(value);
-            data.sort();
+            data.sort(function(a, b) {
+                return a - b;
+            });
             result = binarySearch(data,0,n,value);
             console.log(result);
             n=undefined;

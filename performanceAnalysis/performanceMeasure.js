@@ -105,7 +105,9 @@ if(typeof require && require.main == module){
         }
         
         data1=data.slice();
-        data1.sort();
+        data1.sort(function(a, b) {
+            return a - b;
+        });
         /*
             data1[0]=0;
             value=0;   

@@ -1,6 +1,6 @@
 /*
 *Time Complexity:- O (log log n)     Best case     (If elements are uniformly distributed).
-*             O(n)              Worst case
+*                  O(n)              Worst case
 *interpolation search may go to different locations according the value of key being searched
 */
 
@@ -11,12 +11,11 @@ module.exports = {
 function interpolationSearch(data,lo,n,value){
     // Find both ends index
     hi = (n - 1);
- 
-    // as array is sorted if value exists in the arraythan it is between the ends
+
+    // as array is sorted if value exists in the array than it is between the ends
     while (lo <= hi && value >= data[lo] && value <= data[hi]){
         // assuming the position acc to uniform distribution.
-        var pos = lo + (((hi - lo) / (data[hi] - data[lo])) * (value - data[lo]));
- 
+        var pos = parseInt(lo + (  (value - data[lo]) * ((hi - lo)) / (data[hi] - data[lo]) ));
         // value found
         if (data[pos] == value){
             return "find at index "+pos;
@@ -50,7 +49,6 @@ if(typeof require && require.main == module){
             n = answer;
             console.log("enter elements:");
         }else if(i < n-1){
-            //console.log("i "+i);
             data[i] = answer;
             i++;
         }else if(n-1 == i){
@@ -59,9 +57,9 @@ if(typeof require && require.main == module){
             console.log("enter key value to search:");
         }else{
             value = answer;
-            console.log(data);
-            console.log(value);
-            data.sort();
+            data.sort(function(a, b) {
+                return a - b;
+            });
             result = interpolationSearch(data,0,n,value);
             console.log(result);
             n=undefined;
